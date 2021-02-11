@@ -1,0 +1,31 @@
+android_app_import {
+    name: "MotoSignatureApp",
+    owner: "motorola",
+    apk: "proprietary/app/MotoSignatureApp/MotoSignatureApp.apk",
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    required: [
+        "com.motorola.motosignature_permissions",
+        "com.motorola.motosignature",
+    ],
+}
+
+prebuilt_etc {
+    name: "com.motorola.motosignature_permissions",
+    owner: "motorola",
+    sub_dir: "permissions",
+    src: "proprietary/etc/permissions/com.motorola.motosignature.xml",
+    filename_from_src: true,
+}
+
+dex_import {
+    name: "com.motorola.motosignature",
+    owner: "motorola",
+    jars: ["proprietary/framework/com.motorola.motosignature.jar"],
+    required: [
+        "com.motorola.motosignature_permissions",
+    ],
+}
+
