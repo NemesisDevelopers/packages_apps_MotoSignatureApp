@@ -7,9 +7,20 @@ android_app_import {
         enabled: false,
     },
     required: [
-        "com.motorola.motosignature_permissions",
+        "MotoSignature2App",
         "com.motorola.motosignature",
+        "moto-checkin",
     ],
+}
+
+android_app_import {
+    name: "MotoSignature2App",
+    owner: "motorola",
+    apk: "proprietary/app/MotoSignature2App/MotoSignature2App.apk",
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
 }
 
 prebuilt_etc {
@@ -20,12 +31,29 @@ prebuilt_etc {
     filename_from_src: true,
 }
 
+prebuilt_etc {
+    name: "moto-checkin_permissions",
+    owner: "motorola",
+    sub_dir: "permissions",
+    src: "proprietary/etc/permissions/moto-checkin.xml",
+    filename_from_src: true,
+}
+
 dex_import {
     name: "com.motorola.motosignature",
     owner: "motorola",
     jars: ["proprietary/framework/com.motorola.motosignature.jar"],
     required: [
         "com.motorola.motosignature_permissions",
+    ],
+}
+
+dex_import {
+    name: "moto-checkin",
+    owner: "motorola",
+    jars: ["proprietary/framework/moto-checkin.jar"],
+    required: [
+        "moto-checkin_permissions",
     ],
 }
 
