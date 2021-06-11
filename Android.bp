@@ -10,6 +10,8 @@ android_app_import {
         "MotoSignature2App",
         "com.motorola.motosignature",
         "moto-checkin",
+        "moto-core_services",
+        "moto-settings",
     ],
 }
 
@@ -39,6 +41,22 @@ prebuilt_etc {
     filename_from_src: true,
 }
 
+prebuilt_etc {
+    name: "moto-core_services_permissions",
+    owner: "motorola",
+    sub_dir: "permissions",
+    src: "proprietary/etc/permissions/moto-core_services.xml",
+    filename_from_src: true,
+}
+
+prebuilt_etc {
+    name: "moto-settings_permissions",
+    owner: "motorola",
+    sub_dir: "permissions",
+    src: "proprietary/etc/permissions/moto-settings.xml",
+    filename_from_src: true,
+}
+
 dex_import {
     name: "com.motorola.motosignature",
     owner: "motorola",
@@ -54,6 +72,24 @@ dex_import {
     jars: ["proprietary/framework/moto-checkin.jar"],
     required: [
         "moto-checkin_permissions",
+    ],
+}
+
+dex_import {
+    name: "moto-core_services",
+    owner: "motorola",
+    jars: ["proprietary/framework/moto-core_services.jar"],
+    required: [
+        "moto-core_services_permissions",
+    ],
+}
+
+dex_import {
+    name: "moto-settings",
+    owner: "motorola",
+    jars: ["proprietary/framework/moto-settings.jar"],
+    required: [
+        "moto-settings_permissions",
     ],
 }
 
